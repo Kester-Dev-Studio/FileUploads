@@ -33,3 +33,16 @@ export const uploadMedia = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Server Error" });
   }
 };
+
+
+export const getSingleUpload = async (req: Request, res: Response) => {
+  try {
+    const upload = await Media.findById(req.params.id);
+    if (!upload) {
+      return res.status(404).json({ message: "Upload not found." });
+    }
+    res.json({ data: upload });
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching upload.", error });
+  }
+};
