@@ -214,7 +214,10 @@ function App() {
                   </option>
                   <option value="Web Development">Web Development</option>
                   <option value="2D/3D design">2D/3D Design</option>
+                  <option value="Game Development">Game Development</option>
+                  <option value="App Development">App Development</option>
                 </Field>
+
                 <ErrorMessage
                   name="category"
                   component="div"
