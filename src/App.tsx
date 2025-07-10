@@ -71,7 +71,7 @@ function App() {
     Object.entries(values).forEach(([key, value]) => data.append(key, value));
 
     try {
-      const response = await axios.post("http://localhost:4000/upload", data, {
+      const response = await axios.post("https://file-uploads-server.onrender.com/upload", data, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       console.log(response.data);
