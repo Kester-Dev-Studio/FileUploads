@@ -5,6 +5,7 @@ import type { FormikHelpers } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import "./App.css";
+import UploadManager from "./components/UploadManager";
 
 interface UploadFormValues {
   title: string;
@@ -37,6 +38,7 @@ function App() {
   const [files, setFiles] = useState<File[]>([]);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     const filesWithPreview = acceptedFiles.map((file) =>
@@ -71,7 +73,7 @@ function App() {
     Object.entries(values).forEach(([key, value]) => data.append(key, value));
 
     try {
-      const response = await axios.post("https://file-uploads-server.onrender.com/upload", data, {
+      const response = await axios.post(`${apiUrl}/upload`, data, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       console.log(response.data);
@@ -245,6 +247,8 @@ function App() {
           </Form>
         )}
       </Formik>
+
+      <UploadManager />
     </div>
   );
 }
