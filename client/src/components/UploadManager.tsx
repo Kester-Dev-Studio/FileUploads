@@ -39,7 +39,7 @@ const UploadManager = () => {
   };
 
   const deleteUpload = async (id: string) => {
-    if (deletingId) return; // Prevent double-click
+    if (deletingId) return;
     setDeletingId(id);
     try {
       await axios.delete(`${apiUrl}uploads/${id}`);
@@ -89,7 +89,6 @@ const UploadManager = () => {
       data.append("existingImages", url);
     });
 
-    // Append new images
     newImages.forEach((file) => {
       data.append("newImages", file);
     });
