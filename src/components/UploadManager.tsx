@@ -101,7 +101,7 @@ const UploadManager = () => {
     data.append("tags", JSON.stringify(formData.tags || []));
 
     try {
-      const res = await axios.put(`${apiUrl}uploads/${editingItem._id}`, data, {
+      const res = await axios.put(`${apiUrl}/uploads/${editingItem._id}`, data, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
