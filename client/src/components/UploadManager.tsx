@@ -84,7 +84,6 @@ const UploadManager = () => {
     setUpdating(true);
     const data = new FormData();
 
-    // Append retained image URLs
     (formData.images || []).forEach((url) => {
       data.append("existingImages", url);
     });
@@ -101,7 +100,7 @@ const UploadManager = () => {
     data.append("tags", JSON.stringify(formData.tags || []));
 
     try {
-      const res = await axios.put(`${apiUrl}uploads/${editingItem._id}`, data, {
+      const res = await axios.put(`${apiUrl}/uploads/${editingItem._id}`, data, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
